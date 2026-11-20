@@ -1,0 +1,10 @@
+.venv/
+.pip_cache/
+.hf_cache/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/raw/
+results/_fake/
+results/_smoke/
+results.zip

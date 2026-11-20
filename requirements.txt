@@ -1,0 +1,8 @@
+# torch is not pinned here: Colab's preinstalled CUDA build is used, and the exact
+# version is written to results/<tag>/run_meta_eval.json by run_inference.py.
+transformers==4.57.1
+accelerate==1.11.0
+numpy
+pandas
+scipy
+matplotlib

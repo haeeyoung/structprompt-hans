@@ -1,0 +1,17 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "instruction_tokens": {
+    "P1": 25,
+    "P2": 45,
+    "P3": 55,
+    "P4": 55
+  },
+  "prompt_tokens_mean": {
+    "P1": 111.0,
+    "P2": 131.0,
+    "P3": 141.0,
+    "P4": 141.0
+  },
+  "p4_minus_p3": 0
+}
