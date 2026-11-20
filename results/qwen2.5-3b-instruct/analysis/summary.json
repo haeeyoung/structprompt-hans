@@ -1,0 +1,492 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "analysis_env": {
+    "python": "3.13.16",
+    "numpy": "2.4.6",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0"
+  },
+  "n_items": 300,
+  "n_boot": 2000,
+  "seed": 42,
+  "accuracy": {
+    "P1": {
+      "conflicting": {
+        "lexical_overlap": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "subsequence": [
+          0.68,
+          0.6,
+          0.7604999999999973
+        ],
+        "constituent": [
+          0.88,
+          0.8,
+          0.96
+        ],
+        "all": [
+          0.8533333333333334,
+          0.8133333333333334,
+          0.8933333333333333
+        ]
+      },
+      "consistent": {
+        "lexical_overlap": [
+          0.5,
+          0.38,
+          0.62
+        ],
+        "subsequence": [
+          0.92,
+          0.84,
+          0.98
+        ],
+        "constituent": [
+          0.5,
+          0.4,
+          0.6
+        ],
+        "all": [
+          0.64,
+          0.5866666666666667,
+          0.6933333333333334
+        ]
+      },
+      "overall": [
+        0.7466666666666667,
+        0.71,
+        0.78
+      ],
+      "nonent_rate": [
+        0.6066666666666667,
+        0.5733333333333334,
+        0.6433333333333333
+      ],
+      "nonent_rate_by_heuristic": {
+        "lexical_overlap": [
+          0.75,
+          0.69,
+          0.81
+        ],
+        "subsequence": [
+          0.38,
+          0.32975000000000004,
+          0.44
+        ],
+        "constituent": [
+          0.69,
+          0.63,
+          0.75
+        ]
+      },
+      "invalid": 0,
+      "overall_lenient": 0.7466666666666667,
+      "mean_new_tokens": 7.213333333333333,
+      "label_first_rate": 0.0,
+      "hit_max": 0
+    },
+    "P2": {
+      "conflicting": {
+        "lexical_overlap": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "subsequence": [
+          0.86,
+          0.78,
+          0.94
+        ],
+        "constituent": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "all": [
+          0.9533333333333334,
+          0.9266666666666666,
+          0.98
+        ]
+      },
+      "consistent": {
+        "lexical_overlap": [
+          0.3,
+          0.2,
+          0.42
+        ],
+        "subsequence": [
+          0.5,
+          0.4,
+          0.6
+        ],
+        "constituent": [
+          0.32,
+          0.24,
+          0.42
+        ],
+        "all": [
+          0.37333333333333335,
+          0.31333333333333335,
+          0.42683333333333245
+        ]
+      },
+      "overall": [
+        0.6633333333333333,
+        0.63,
+        0.6966666666666667
+      ],
+      "nonent_rate": [
+        0.79,
+        0.7566666666666667,
+        0.8233333333333334
+      ],
+      "nonent_rate_by_heuristic": {
+        "lexical_overlap": [
+          0.85,
+          0.79,
+          0.9
+        ],
+        "subsequence": [
+          0.68,
+          0.61,
+          0.74
+        ],
+        "constituent": [
+          0.84,
+          0.79,
+          0.88
+        ]
+      },
+      "invalid": 0,
+      "overall_lenient": 0.6633333333333333,
+      "mean_new_tokens": 61.986666666666665,
+      "label_first_rate": 0.0,
+      "hit_max": 0
+    },
+    "P3": {
+      "conflicting": {
+        "lexical_overlap": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "subsequence": [
+          0.74,
+          0.64,
+          0.84
+        ],
+        "constituent": [
+          0.84,
+          0.74,
+          0.92
+        ],
+        "all": [
+          0.86,
+          0.8133333333333334,
+          0.9066666666666666
+        ]
+      },
+      "consistent": {
+        "lexical_overlap": [
+          0.6,
+          0.48,
+          0.7
+        ],
+        "subsequence": [
+          0.88,
+          0.8,
+          0.96
+        ],
+        "constituent": [
+          0.56,
+          0.44,
+          0.66
+        ],
+        "all": [
+          0.68,
+          0.62,
+          0.74
+        ]
+      },
+      "overall": [
+        0.77,
+        0.73,
+        0.8066666666666666
+      ],
+      "nonent_rate": [
+        0.58,
+        0.5433333333333333,
+        0.6166666666666667
+      ],
+      "nonent_rate_by_heuristic": {
+        "lexical_overlap": [
+          0.69,
+          0.64,
+          0.75
+        ],
+        "subsequence": [
+          0.42,
+          0.36,
+          0.48
+        ],
+        "constituent": [
+          0.63,
+          0.56,
+          0.7
+        ]
+      },
+      "invalid": 6,
+      "overall_lenient": 0.77,
+      "mean_new_tokens": 95.14333333333333,
+      "label_first_rate": 0.0,
+      "hit_max": 9
+    },
+    "P4": {
+      "conflicting": {
+        "lexical_overlap": [
+          0.98,
+          0.94,
+          1.0
+        ],
+        "subsequence": [
+          0.78,
+          0.7,
+          0.86
+        ],
+        "constituent": [
+          0.92,
+          0.84,
+          0.98
+        ],
+        "all": [
+          0.8933333333333333,
+          0.8533333333333334,
+          0.9333333333333333
+        ]
+      },
+      "consistent": {
+        "lexical_overlap": [
+          0.48,
+          0.34,
+          0.6
+        ],
+        "subsequence": [
+          0.86,
+          0.76,
+          0.94
+        ],
+        "constituent": [
+          0.36,
+          0.28,
+          0.46
+        ],
+        "all": [
+          0.5666666666666667,
+          0.5,
+          0.6266666666666667
+        ]
+      },
+      "overall": [
+        0.73,
+        0.6933333333333334,
+        0.7666666666666667
+      ],
+      "nonent_rate": [
+        0.66,
+        0.6233333333333333,
+        0.6966666666666667
+      ],
+      "nonent_rate_by_heuristic": {
+        "lexical_overlap": [
+          0.75,
+          0.68,
+          0.82
+        ],
+        "subsequence": [
+          0.46,
+          0.4,
+          0.53
+        ],
+        "constituent": [
+          0.77,
+          0.71,
+          0.82
+        ]
+      },
+      "invalid": 1,
+      "overall_lenient": 0.73,
+      "mean_new_tokens": 68.71,
+      "label_first_rate": 0.0,
+      "hit_max": 0
+    }
+  },
+  "tests": [
+    {
+      "a": "P3",
+      "b": "P2",
+      "subset": "conflicting",
+      "role": "H1 (primary)",
+      "diff": -0.09333333333333334,
+      "lo": -0.14666666666666667,
+      "hi": -0.04,
+      "gain": 4,
+      "loss": 18,
+      "mcnemar_p": 0.004343509674072266,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P4",
+      "subset": "conflicting",
+      "role": "control (secondary)",
+      "diff": -0.03333333333333333,
+      "lo": -0.08666666666666667,
+      "hi": 0.013333333333333334,
+      "gain": 7,
+      "loss": 12,
+      "mcnemar_p": 0.359283447265625,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P1",
+      "subset": "conflicting",
+      "role": "exploratory",
+      "diff": 0.006666666666666667,
+      "lo": -0.04,
+      "hi": 0.05333333333333334,
+      "gain": 9,
+      "loss": 8,
+      "mcnemar_p": 1.0,
+      "n": 150
+    },
+    {
+      "a": "P2",
+      "b": "P1",
+      "subset": "conflicting",
+      "role": "exploratory",
+      "diff": 0.1,
+      "lo": 0.06,
+      "hi": 0.14,
+      "gain": 15,
+      "loss": 0,
+      "mcnemar_p": 6.103515625e-05,
+      "n": 150
+    },
+    {
+      "a": "P4",
+      "b": "P2",
+      "subset": "conflicting",
+      "role": "exploratory",
+      "diff": -0.06,
+      "lo": -0.09333333333333334,
+      "hi": -0.02666666666666667,
+      "gain": 0,
+      "loss": 9,
+      "mcnemar_p": 0.00390625,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P2",
+      "subset": "consistent",
+      "role": "loss check",
+      "diff": 0.30666666666666664,
+      "lo": 0.23333333333333334,
+      "hi": 0.37333333333333335,
+      "gain": 53,
+      "loss": 7,
+      "mcnemar_p": 7.671918274276823e-10,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P4",
+      "subset": "consistent",
+      "role": "loss check",
+      "diff": 0.11333333333333333,
+      "lo": 0.04,
+      "hi": 0.18666666666666668,
+      "gain": 28,
+      "loss": 11,
+      "mcnemar_p": 0.009475304279476404,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P1",
+      "subset": "consistent",
+      "role": "loss check",
+      "diff": 0.04,
+      "lo": -0.03333333333333333,
+      "hi": 0.11333333333333333,
+      "gain": 24,
+      "loss": 18,
+      "mcnemar_p": 0.44079906734259566,
+      "n": 150
+    },
+    {
+      "a": "P3",
+      "b": "P2",
+      "subset": "all",
+      "role": "overall",
+      "diff": 0.10666666666666667,
+      "lo": 0.06,
+      "hi": 0.15008333333333287,
+      "gain": 57,
+      "loss": 25,
+      "mcnemar_p": 0.0005347214913281793,
+      "n": 300
+    },
+    {
+      "a": "P3",
+      "b": "P4",
+      "subset": "all",
+      "role": "overall",
+      "diff": 0.04,
+      "lo": -0.006666666666666667,
+      "hi": 0.08333333333333333,
+      "gain": 35,
+      "loss": 23,
+      "mcnemar_p": 0.14800580076020603,
+      "n": 300
+    }
+  ],
+  "h2": {
+    "stat": 0.14,
+    "lo": 0.060000000000000005,
+    "hi": 0.22,
+    "per_heuristic": {
+      "lexical_overlap": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "subsequence": [
+        -0.12,
+        -0.26,
+        0.0
+      ],
+      "constituent": [
+        -0.16,
+        -0.26,
+        -0.08
+      ]
+    }
+  },
+  "nonent_shift_P3_minus_P2": {
+    "diff": -0.21,
+    "lo": -0.25666666666666665,
+    "hi": -0.16666666666666666,
+    "gain": 11,
+    "loss": 74,
+    "mcnemar_p": 1.2888315230163817e-12,
+    "n": 300
+  },
+  "h1_supported": false,
+  "h2_supported": true
+}

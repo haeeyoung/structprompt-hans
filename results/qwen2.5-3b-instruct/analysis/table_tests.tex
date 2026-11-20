@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrcrr}
+\toprule
+Comparison & Subset & $\Delta$ (pp) & 95\% CI & $+$/$-$ & $p$ \\
+\midrule
+P3$-$P2 & conflicting & -9.3 & [-14.7, -4.0] & 4/18 & 0.004 \\
+P3$-$P4 & conflicting & -3.3 & [-8.7, +1.3] & 7/12 & 0.359 \\
+P3$-$P1 & conflicting & +0.7 & [-4.0, +5.3] & 9/8 & 1.000 \\
+P2$-$P1 & conflicting & +10.0 & [+6.0, +14.0] & 15/0 & 0.000 \\
+P4$-$P2 & conflicting & -6.0 & [-9.3, -2.7] & 0/9 & 0.004 \\
+P3$-$P2 & consistent & +30.7 & [+23.3, +37.3] & 53/7 & 0.000 \\
+P3$-$P4 & consistent & +11.3 & [+4.0, +18.7] & 28/11 & 0.009 \\
+P3$-$P1 & consistent & +4.0 & [-3.3, +11.3] & 24/18 & 0.441 \\
+P3$-$P2 & all & +10.7 & [+6.0, +15.0] & 57/25 & 0.001 \\
+P3$-$P4 & all & +4.0 & [-0.7, +8.3] & 35/23 & 0.148 \\
+\midrule
+H2: LO gain $-$ mean(SUB, CON) & conflicting & +14.0 & [+6.0, +22.0] & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Paired accuracy differences in percentage points. CIs: stratified paired bootstrap (2000 resamples within HANS subcases). $+$/$-$: items that the first prompt gets right and the second wrong, and the reverse; $p$: exact McNemar test.}
+\label{tab:tests}
+\end{table}

@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrcc}
+\toprule
+Prompt & Excl. & $d'$ [95\% CI] & $c$ [95\% CI] \\
+\midrule
+P1 Basic & 0 & +0.81 [+0.60, +1.02] & +0.17 [+0.06, +0.28] \\
+P2 General reasoning & 0 & +0.29 [+0.06, +0.52] & +1.05 [+0.94, +1.17] \\
+P3 Structure-aware & 45 & +0.52 [+0.25, +0.79] & +0.14 [+0.01, +0.28] \\
+P4 Nonstructural control & 0 & +0.00 [+0.00, +0.00] & +2.72 [+2.72, +2.72] \\
+\midrule
+Contrast & & $\Delta d'$ [95\% CI] & $\Delta c$ [95\% CI] \\
+\midrule
+P3$-$P2 & & +0.23 [-0.08, +0.54] & -0.91 [-1.08, -0.75] \\
+P3$-$P4 & & +0.52 [+0.25, +0.79] & -2.58 [-2.71, -2.44] \\
+P3$-$P1 & & -0.29 [-0.60, +0.03] & -0.03 [-0.20, +0.13] \\
+P2$-$P1 & & -0.52 [-0.78, -0.26] & +0.88 [+0.75, +1.02] \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Post-hoc} signal-detection analysis with Entailment as the signal: $H = P(\hat{y}{=}\mathrm{E}\mid y{=}\mathrm{E})$, $F = P(\hat{y}{=}\mathrm{E}\mid y{=}\mathrm{N})$, $d' = z(H) - z(F)$, $c = -\tfrac{1}{2}(z(H) + z(F))$; $c > 0$ indicates a bias toward Non-entailment. Invalid outputs are excluded (Excl.). Rates use the log-linear correction of \citet{hautus1995corrections}. CIs: 2000 paired bootstrap resamples stratified by HANS subcase.}
+\label{tab:sdt}
+\end{table}

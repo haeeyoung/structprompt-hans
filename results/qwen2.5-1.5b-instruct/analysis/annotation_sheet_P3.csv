@@ -1,0 +1,194 @@
+﻿item_id,heuristic,subcase,gold,premise,hypothesis,P3_output,P3_label,P3_correct,roles_correct,label_follows,notes
+hans-eval-ex4146,lexical_overlap,ln_conjunction,non-entailment,The tourist advised the artists and the manager.,The artists advised the manager.,"In the premise, the tourist advised the artists and the manager. In the hypothesis, the artists advised the manager. 
+
+Final label: Non-entailment
+
+Explanation: The premise states that the tourist advised both the artists and the manager. The hypothesis claims that the artists advised the manager. These two statements are contradictory because the tourist is not the same as the artists. Therefore, the hypothesis does not follow from the premise.",non-entailment,1,,,
+hans-eval-ex4574,lexical_overlap,ln_conjunction,non-entailment,The managers helped the artist and the professor.,The artist helped the professor.,"In the premise, ""The managers helped the artist and the professor,"" the managers are the ones performing the action of helping. The artist and the professor are the ones receiving the help. The hypothesis states, ""The artist helped the professor,"" where the artist is performing the action of helping, and the professor is receiving the help. 
+
+Final label: Non-entailment.",non-entailment,1,,,
+hans-eval-ex4658,lexical_overlap,ln_conjunction,non-entailment,The artists and the scientist recognized the senators.,The scientist recognized the artists.,"In the premise, the artists and the scientist recognize the senators. In the hypothesis, the scientist recognizes the artists. The key difference is that in the premise, the artists are recognized by the scientist, while in the hypothesis, the scientist recognizes the artists.
+
+Final label: Non-entailment",non-entailment,1,,,
+hans-eval-ex4762,lexical_overlap,ln_conjunction,non-entailment,The president and the secretaries stopped the senator.,The secretaries stopped the president.,"In the premise, the president and the secretaries stopped the senator. In the hypothesis, the secretaries stopped the president. 
+
+Final label: Non-entailment
+
+Explanation: The premise states that the president and the secretaries stopped the senator, indicating that the president is the one who stopped the senator. The hypothesis, however, claims that the secretaries stopped the president, which contradicts the premise. Therefore, the hypothesis does not follow from the premise.",non-entailment,1,,,
+hans-eval-ex3408,lexical_overlap,ln_passive,non-entailment,The senator was supported by the managers.,The senator supported the managers.,"In the premise, ""The senator was supported by the managers,"" the senator is the one performing the action of being supported. The managers are the ones receiving the support.
+
+In the hypothesis, ""The senator supported the managers,"" the senator is the one receiving the support. The managers are the ones performing the action of supporting.
+
+Final label: Non-entailment
+
+The premise and hypothesis describe different actions and relationships between the senator and the managers. The premise states that the senator is supported by the managers, while the hypothesis states that the senator supports the managers. These are not the same actions, so the hypothesis does not necessarily follow from",non-entailment,1,,,
+hans-eval-ex3438,lexical_overlap,ln_passive,non-entailment,The president was recognized by the managers.,The president recognized the managers.,"In the premise, ""The president was recognized by the managers,"" the president is the one performing the action of being recognized. The managers are the ones receiving the recognition.
+
+In the hypothesis, ""The president recognized the managers,"" the president is the one receiving the recognition, and the managers are the ones performing the action.
+
+The final label is: Non-entailment.",invalid,0,,,
+hans-eval-ex3598,lexical_overlap,ln_passive,non-entailment,The doctor was avoided by the lawyer.,The doctor avoided the lawyer.,"In the premise, ""The doctor was avoided by the lawyer,"" the doctor is the one who performs the action of being avoided. The lawyer is the one who receives the action of being avoided. In the hypothesis, ""The doctor avoided the lawyer,"" the doctor is the one who receives the action of avoiding. The lawyer is the one who performs the action of avoiding.
+
+Final label: Non-entailment.",non-entailment,1,,,
+hans-eval-ex11,lexical_overlap,ln_subject/object_swap,non-entailment,The judges supported the banker.,The banker supported the judges.,"In the premise, ""The judges supported the banker,"" the banker is the one performing the action of being supported by the judges. The judges are the ones performing the action of supporting the banker.
+
+In the hypothesis, ""The banker supported the judges,"" the banker is the one performing the action of supporting the judges. The judges are the ones receiving the action of being supported by the banker.
+
+The hypothesis does not follow from the premise because the roles of the banker and the judges are reversed. The banker is performing the action of supporting the judges, not the other way around.
+
+Final label: Non-entailment",non-entailment,1,,,
+hans-eval-ex6273,lexical_overlap,le_around_prepositional_phrase,entailment,The senator in front of the author introduced the lawyer.,The senator introduced the lawyer.,"In the premise, ""The senator in front of the author introduced the lawyer,"" the senator performs the action of introducing the lawyer. The author receives this introduction. The hypothesis states, ""The senator introduced the lawyer."" Here, the senator performs the action of introducing the lawyer, and the lawyer is the recipient. 
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex6663,lexical_overlap,le_around_prepositional_phrase,entailment,The lawyer in front of the artists recommended the manager.,The lawyer recommended the manager.,"In the premise, ""The lawyer in front of the artists recommended the manager,"" the lawyer is the one performing the action of recommending. The manager is the one receiving the recommendation. The hypothesis states, ""The lawyer recommended the manager,"" where the lawyer is still performing the action of recommending, and the manager is receiving the recommendation. 
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex8786,lexical_overlap,le_conjunction,entailment,The professors and the athletes encouraged the tourists.,The professors encouraged the tourists.,"In the premise, ""The professors and the athletes encouraged the tourists,"" the professors and athletes are the ones performing the action of encouraging. The tourists are the ones receiving the encouragement. The hypothesis states, ""The professors encouraged the tourists."" Here, the professors are the ones performing the action, and the tourists are the ones receiving it. 
+
+Final label: Non-entailment.",non-entailment,0,,,
+hans-eval-ex9274,lexical_overlap,le_passive,entailment,The author was helped by the students.,The students helped the author.,"In the premise, ""The author was helped by the students,"" the author is the one performing the action of being helped. The students are the ones receiving the help.
+
+In the hypothesis, ""The students helped the author,"" the students are the ones performing the action of helping. The author is the one receiving the help.
+
+The hypothesis does not follow from the premise because the roles of the author and the students are reversed. The author is the one being helped, not the one helping.
+
+Final label: Non-entailment",non-entailment,0,,,
+hans-eval-ex9824,lexical_overlap,le_passive,entailment,The actor was admired by the lawyer.,The lawyer admired the actor.,"In the premise, the actor performed the action of being admired by the lawyer. In the hypothesis, the lawyer performed the action of admiring the actor. The actor and the lawyer are different individuals, so the hypothesis cannot be true if the premise is true. Therefore, the final label is: Non-entailment.",invalid,0,,,
+hans-eval-ex5511,lexical_overlap,le_relative_clause,entailment,The athletes who the judge saw recognized the professor.,The judge saw the athletes.,"In the premise, the judge sees the athletes. In the hypothesis, the athletes see the judge. The judge sees the athletes, and the athletes see the judge. The actions are performed by different subjects, but the overall meaning is the same. The final label is: Entailment.",invalid,0,,,
+hans-eval-ex5897,lexical_overlap,le_relative_clause,entailment,The judge recommended the president who the lawyer contacted.,The lawyer contacted the president.,"In the premise, the judge recommended the president. The lawyer contacted the president. The hypothesis states that the lawyer contacted the president. 
+
+Final label: Non-entailment
+
+Explanation: The premise indicates that the judge recommended the president, but it does not specify who the lawyer contacted. The hypothesis assumes that the lawyer contacted the president, but this is not necessarily true based on the given information. The relationship between the judge, the president, and the lawyer is not explicitly stated in the premise, so we cannot conclude that the hypothesis must be true.",non-entailment,0,,,
+hans-eval-ex10080,subsequence,sn_NP/S,non-entailment,The secretaries believed the manager recognized the scientist.,The secretaries believed the manager.,"In the premise, the secretaries believe the manager recognized the scientist. In the hypothesis, the secretaries believe the manager. The secretaries are the ones performing the action of believing in both cases. The manager is the one who receives the belief from the secretaries in the premise, but in the hypothesis, the manager is not receiving the belief. Therefore, the hypothesis does not follow from the premise.
+
+Final label: Non-entailment",non-entailment,1,,,
+hans-eval-ex10580,subsequence,sn_NP/S,non-entailment,The judges knew the doctors helped the professor.,The judges knew the doctors.,"In the premise, the judges know the doctors helped the professor. In the hypothesis, the judges know the doctors. 
+
+Final label: Non-entailment
+
+Explanation: The premise states that the judges know that the doctors helped the professor. The hypothesis only states that the judges know the doctors. The premise implies that the doctors helped the professor, but the hypothesis does not make this assumption. Therefore, the hypothesis does not necessarily follow from the premise.",non-entailment,1,,,
+hans-eval-ex14131,subsequence,sn_NP/Z,non-entailment,While the professors hid the judges introduced the tourist.,The professors hid the judges.,"In the premise, ""While the professors hid the judges introduced the tourist,"" the action of ""hiding"" is performed by the professors, and the action of ""introducing"" is performed by the judges. The clause ""introduced the tourist"" is a subordinate clause that modifies the action of ""hiding."" 
+
+In the hypothesis, ""The professors hid the judges,"" the action of ""hiding"" is performed by the professors, and the action of ""introducing"" is performed by the judges. The clause ""introduced the tourist"" is not present in the hypothesis.
+
+Final label: Non-entailment.",non-entailment,1,,,
+hans-eval-ex14497,subsequence,sn_NP/Z,non-entailment,When the tourist presented the bankers ran.,The tourist presented the bankers.,"In the premise ""When the tourist presented the bankers ran,"" the subject is ""the tourist"" who is performing the action of ""presenting."" The object of this action is ""the bankers."" The phrase ""ran"" indicates that the bankers are receiving the action of being presented.
+
+In the hypothesis ""The tourist presented the bankers,"" the subject is ""the tourist"" who is performing the action of ""presenting."" The object of this action is ""the bankers."" The phrase ""ran"" in the premise does not affect the meaning of the hypothesis.
+
+Final label: Entailment
+
+The hypothesis ""The tourist presented the bankers"" is ent",entailment,0,,,
+hans-eval-ex13319,subsequence,sn_past_participle,non-entailment,The actor avoided the secretaries studied in the school.,The secretaries studied in the school.,"In the given premise, ""The actor avoided the secretaries studied in the school,"" the actor is the one who avoided the secretaries. The secretaries are the ones who were studied in the school. The hypothesis states, ""The secretaries studied in the school."" This hypothesis is not directly supported by the premise because the premise does not mention the secretaries studying in the school. Therefore, the hypothesis is not entailed by the premise.
+
+Final label: Non-entailment",non-entailment,1,,,
+hans-eval-ex13730,subsequence,sn_past_participle,non-entailment,The presidents encouraged the author paid in the school.,The author paid in the school.,"In the premise, ""The presidents encouraged the author paid in the school,"" the action of paying is performed by the author. The premise states that the presidents encouraged the author to pay in the school. The hypothesis, ""The author paid in the school,"" is a simplified version of this action. The hypothesis states that the author paid in the school, which is consistent with the premise.
+
+Final label: Entailment",entailment,0,,,
+hans-eval-ex13951,subsequence,sn_past_participle,non-entailment,The judge paid in the museum arrived.,The judge paid in the museum.,"In the given premise and hypothesis, both involve the judge paying in the museum. The only difference is that the premise specifies ""the judge paid in the museum arrived,"" while the hypothesis simply states ""The judge paid in the museum."" 
+
+The final label is: **Entailment**.",invalid,0,,,
+hans-eval-ex12921,subsequence,sn_relative_clause_on_subject,non-entailment,The artists that mentioned the president recognized the secretary.,The president recognized the secretary.,"In the premise, the artists recognized the secretary. In the hypothesis, the president recognized the secretary. The premise states that the artists recognized the secretary, while the hypothesis states that the president recognized the secretary. The premise does not provide information about who recognized whom, so we cannot determine if the hypothesis is true based on the premise alone. Therefore, the final label is: Non-entailment.",invalid,0,,,
+hans-eval-ex16464,subsequence,se_adjective,entailment,Angry secretaries advised the manager.,Secretaries advised the manager.,"In the premise, ""Angry secretaries advised the manager,"" the secretaries are the ones who perform the action of advising. The manager is the one who receives the advice. In the hypothesis, ""Secretaries advised the manager,"" the secretaries are the ones who perform the action of advising, and the manager is the one who receives the advice. The only difference is that the premise specifies that the secretaries are angry, while the hypothesis does not. However, the core meaning of the actions and the recipients remain the same.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex16736,subsequence,se_adjective,entailment,Famous secretaries saw the senator.,Secretaries saw the senator.,"In the premise, ""Famous secretaries saw the senator,"" the subject is ""Famous secretaries,"" and the verb is ""saw."" In the hypothesis, ""Secretaries saw the senator,"" the subject is ""Secretaries,"" and the verb is ""saw."" The subject in the premise is performing the action of seeing, while the subject in the hypothesis is receiving the action of seeing. The verb ""saw"" is the same in both sentences, indicating that the action is the same. Therefore, the hypothesis follows from the premise.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex15654,subsequence,se_conjunction,entailment,The actor stopped the professors and the secretaries.,The actor stopped the professors.,"In the premise, ""The actor stopped the professors and the secretaries,"" the actor performs the action of stopping. The professors and secretaries are the ones receiving the action. The clause ""and the secretaries"" indicates that both the professors and the secretaries are being stopped. 
+
+In the hypothesis, ""The actor stopped the professors,"" the actor performs the action of stopping. The professors are the ones receiving the action.
+
+The hypothesis is a subset of the premise because the actor stopping the professors is a part of the broader action of stopping the professors and the secretaries. Therefore, the hypothesis is entailed by the premise.
+
+Final label",invalid,0,,,
+hans-eval-ex18543,subsequence,se_relative_clause_on_obj,entailment,The athletes believed the actors who slept.,The athletes believed the actors.,"In the premise, ""The athletes believed the actors who slept,"" the athletes are the ones who believe. The actors who slept are the ones who are believed. The hypothesis states, ""The athletes believed the actors,"" where the athletes are the ones who believe, and the actors are the ones who are believed. 
+
+Final label: Non-entailment",non-entailment,0,,,
+hans-eval-ex17019,subsequence,se_understood_object,entailment,The judge read the story.,The judge read.,"In the premise ""The judge read the story,"" the subject is ""the judge"" and the verb is ""read."" In the hypothesis ""The judge read,"" the subject is ""the judge"" and the verb is ""read."" The only difference is that the premise specifies ""the story,"" while the hypothesis does not. 
+
+Final label: Non-entailment.",non-entailment,0,,,
+hans-eval-ex17371,subsequence,se_understood_object,entailment,The athlete paid the students.,The athlete paid.,"In the premise, ""The athlete paid the students,"" the athlete performs the action of paying, and the students receive the payment. In the hypothesis, ""The athlete paid,"" the athlete performs the action of paying, but the subject is not specified. 
+
+Final label: Non-entailment.",non-entailment,0,,,
+hans-eval-ex17500,subsequence,se_understood_object,entailment,The secretaries explored the region.,The secretaries explored.,"In the premise, ""The secretaries explored the region,"" the subject is ""The secretaries,"" and the action is ""explored."" In the hypothesis, ""The secretaries explored,"" the subject is ""The secretaries"" and the action is ""explored."" The only difference is that the premise specifies ""the region,"" while the hypothesis does not. 
+
+Final label: Non-entailment.",non-entailment,0,,,
+hans-eval-ex24094,constituent,cn_adverb,non-entailment,Hopefully the bankers advised the professor.,The bankers advised the professor.,"In the given premise and hypothesis, both involve the action of ""advising"" and the subject ""bankers."" The only difference is the subject of the hypothesis, which is ""the professor,"" while the premise specifies ""the professor"" as the recipient of the advice. 
+
+The grammatical relationship in the premise is that the bankers are the ones advising the professor. In the hypothesis, the bankers are still advising the professor, but the subject is different. 
+
+Final label: Entailment
+
+The hypothesis must be true if the premise is true because the action of advising remains the same, and the subject of the action is the same",entailment,0,,,
+hans-eval-ex21044,constituent,cn_after_if_clause,non-entailment,"If the author saw the actors, the student shouted.",The student shouted.,"In the given premise, ""If the author saw the actors, the student shouted,"" the subject performing the action is the author, who saw the actors. The subject receiving the action is the student, who shouted. The conditional nature of the premise indicates that the student's action (shouting) is contingent upon the author's action (seeing the actors).
+
+The hypothesis states, ""The student shouted."" This statement is a direct consequence of the premise because the premise explicitly mentions that the student shouted when the author saw the actors.
+
+Final label: Entailment",entailment,0,,,
+hans-eval-ex21826,constituent,cn_after_if_clause,non-entailment,"Unless the banker recommended the lawyers, the actors advised the artists.",The actors advised the artists.,"In the premise, the actor is the one who performs the action of advising the artist. The premise states that unless the banker recommended the lawyers, the actors advised the artists. This means that the actors advised the artists under the condition that the banker did not recommend the lawyers.
+
+The hypothesis states that the actors advised the artists. This is a direct restatement of the condition in the premise, which is that the actors advised the artists under the condition that the banker did not recommend the lawyers.
+
+Since the hypothesis is a direct restatement of the condition in the premise, it must be true whenever the premise is true. Therefore, the hypothesis follows",invalid,0,,,
+hans-eval-ex23300,constituent,cn_disjunction,non-entailment,"The actor recommended the senator, or the authors slept.",The actor recommended the senator.,"In the premise, the actor recommended the senator. In the hypothesis, the actor recommended the senator. The clause ""or the authors slept"" does not affect the meaning of the premise. Therefore, the hypothesis is entailed by the premise.
+
+Final label: Entailment",entailment,0,,,
+hans-eval-ex23849,constituent,cn_disjunction,non-entailment,"The doctors advised the managers, or the banker saw the professor.",The banker saw the professor.,"In the premise, the doctors advised the managers, and the banker saw the professor. The hypothesis states that the banker saw the professor. 
+
+The doctors advised the managers, and the banker saw the professor. The hypothesis states that the banker saw the professor. 
+
+The doctors advised the managers, and the banker saw the professor. The hypothesis states that the banker saw the professor. 
+
+The doctors advised the managers, and the banker saw the professor. The hypothesis states that the banker saw the professor. 
+
+The doctors advised the managers, and the banker saw the professor. The hypothesis states that the banker saw the professor. 
+
+The doctors advised the",invalid,0,,,
+hans-eval-ex23882,constituent,cn_disjunction,non-entailment,"The secretaries contacted the president, or the professor admired the artists.",The secretaries contacted the president.,"In the premise, the secretaries are the ones who contacted the president. The hypothesis states that the secretaries contacted the president. Since the secretaries are performing the action of contacting the president in both the premise and the hypothesis, the hypothesis is entailed by the premise.
+
+Final label: Entailment",entailment,0,,,
+hans-eval-ex20721,constituent,cn_embedded_under_if,non-entailment,"If the authors admired the tourists, the senator slept.",The authors admired the tourists.,"In the given premise, the action ""admired"" is performed by the authors, and the action ""slept"" is performed by the senator. The hypothesis states that the authors admired the tourists. 
+
+Final label: Non-entailment
+
+The premise indicates that the authors admired the tourists, but it does not specify that the authors performed the action of admiring. The hypothesis only states that the authors admired the tourists, which is a subset of the information provided in the premise. Therefore, the hypothesis does not necessarily follow from the premise.",non-entailment,1,,,
+hans-eval-ex22379,constituent,cn_embedded_under_verb,non-entailment,The scientist thought that the student performed.,The student performed.,"In the premise, ""The scientist thought that the student performed,"" the scientist is the one who thought something. The student is the one who performed. The hypothesis states, ""The student performed."" This is a direct statement about the student performing something.
+
+Final label: Non-entailment
+
+The premise and the hypothesis are not directly related in terms of who performs the action. The premise indicates that the scientist thought the student performed, but it does not specify who performed the action. The hypothesis simply states that the student performed, which is a different action from what the premise suggests. Therefore, the hypothesis does not necessarily follow from the premise",non-entailment,1,,,
+hans-eval-ex29250,constituent,ce_adverb,entailment,Certainly the banker helped the senators.,The banker helped the senators.,"In this case, the premise and the hypothesis are identical. The subject ""The banker"" in the premise is the same as the subject ""The banker"" in the hypothesis. The verb ""helped"" is the same in both sentences. The object ""the senators"" is also the same in both sentences. Therefore, the hypothesis follows from the premise.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex29281,constituent,ce_adverb,entailment,Suddenly the scientist danced.,The scientist danced.,"In the premise ""Suddenly the scientist danced,"" the subject is ""the scientist"" and the action is ""danced."" In the hypothesis ""The scientist danced,"" the subject is also ""the scientist"" and the action is ""danced."" 
+
+The grammatical relationship between the premise and the hypothesis is that the subject and the action are the same in both sentences. Therefore, the hypothesis follows from the premise.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex29759,constituent,ce_adverb,entailment,Without a doubt the doctors called the senator.,The doctors called the senator.,"In this case, the premise and the hypothesis are identical. The doctors called the senator, and the hypothesis also states that the doctors called the senator. Therefore, the hypothesis is entailed by the premise.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex26095,constituent,ce_after_since_clause,entailment,"Since the authors recommended the artists, the scientist helped the professor.",The scientist helped the professor.,"In the premise, the action ""helped"" is performed by the scientist, and the action ""received"" is performed by the professor. The hypothesis states that the scientist helped the professor. Since the scientist is the one who performed the action of helping, and the professor is the one who received the help, the hypothesis is entailed by the premise.
+
+Final label: Entailment",entailment,1,,,
+hans-eval-ex26692,constituent,ce_after_since_clause,entailment,"Whether or not the tourist resigned, the athletes ran.",The athletes ran.,"In the premise, the athletes are performing the action of running, and the tourist is receiving the action of resigning. The final label is: Non-entailment.",invalid,0,,,
+hans-eval-ex28203,constituent,ce_conjunction,entailment,"The lawyers arrived, and the artist called the judges.",The lawyers arrived.,"In the given premise, ""The lawyers arrived, and the artist called the judges,"" the action of ""arrived"" is performed by the lawyers. The action of ""called"" is performed by the artist. The clause ""and the artist called the judges"" is a conjunction that connects two independent clauses. 
+
+The hypothesis states, ""The lawyers arrived."" This hypothesis is a simplified version of the first part of the premise, focusing only on the action of the lawyers arriving.
+
+Given that the premise states that the lawyers arrived and the artist called the judges, and the hypothesis only mentions the lawyers arriving, the hypothesis is a subset of the information",invalid,0,,,
+hans-eval-ex28517,constituent,ce_conjunction,entailment,"The professors avoided the author, and the bankers advised the artist.",The professors avoided the author.,"In the given premise, the professors avoided the author, and the bankers advised the artist. The hypothesis states that the professors avoided the author. 
+
+To analyze this, we need to identify the subjects and objects of the actions described in both the premise and the hypothesis.
+
+1. **Premise Analysis:**
+   - **Action performed by:** Professors
+   - **Action performed on:** Author
+   - **Action performed by:** Bankers
+   - **Action performed on:** Artist
+
+2. **Hypothesis Analysis:**
+   - **Action performed by:** Professors
+   - **Action performed on:** Author",invalid,0,,,

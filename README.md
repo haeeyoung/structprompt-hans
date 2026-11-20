@@ -19,20 +19,26 @@ Exact wording: [prompts.py](prompts.py).
 Open [colab_run.ipynb](colab_run.ipynb) in Colab
 ([direct link](https://colab.research.google.com/github/haeeyoung/structprompt-hans/blob/main/colab_run.ipynb)),
 set **Runtime → Change runtime type → T4 GPU**, then **Runtime → Run all**.
-It reruns every step below, optionally runs the greedy-decoding check (`tests/check_greedy.py`),
+It reruns every pre-registered step below (the post-hoc scripts run on the committed predictions without a GPU),
+optionally runs the greedy-decoding check (`tests/check_greedy.py`),
 and downloads `results.zip` at the end: raw model responses, run metadata (library versions, GPU,
 decoding settings), every table, the figure, the example and annotation sheets, and `env/`
 (`pip freeze`, `nvidia-smi`).
 
 ## Environment
 
-| | Main experiments | Pipeline tests |
+| | Main experiments (logged in `results/*/run_meta_eval.json`, `results/env/`) | Pipeline tests and re-analysis |
 |---|---|---|
-| Hardware | Google Colab, NVIDIA T4 (16 GB) | laptop CPU, no GPU |
-| Python | Colab default (logged in `run_meta_eval.json`) | 3.13 |
-| torch | Colab preinstalled CUDA build (logged) | 2.15.0+cpu |
+| Hardware | Google Colab, Tesla T4 (14.6 GB usable) | laptop CPU, no GPU |
+| Python | 3.13.16 | 3.13 |
+| torch / CUDA | 2.14.1+cu130 / 13.0 | 2.15.0+cpu |
 | transformers / accelerate | 4.57.1 / 1.11.0 | 4.57.1 / 1.11.0 |
+| numpy / pandas / scipy | 2.4.6 / 2.2.3 / 1.16.3 | 2.5.5 / 3.1.1 / 1.18.1 |
 | Precision | float16 | float32 |
+
+Re-running `analyze.py` on the committed predictions with the local versions reproduces every table and
+example file byte for byte; CSV files differ only in Windows line endings, and `summary.json` only in the
+16th significant digit of one p-value.
 
 ```bash
 pip install -r requirements.txt   # plus a torch build for your machine
@@ -52,8 +58,35 @@ pip install -r requirements.txt   # plus a torch build for your machine
 | Appendix: per-subcase accuracy | same command | `results/<tag>/analysis/table_subcase.tex` |
 | Sampled examples and P2→P3 flips | same command | `random_examples.md`, `flips_P2_P3.md` |
 | Robustness model | the last three commands with `--tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/` |
+| **Post-hoc** SDT table: d′, c, paired Δd′/Δc | `python sdt_analysis.py --tag qwen2.5-3b-instruct` | `results/<tag>/analysis/sdt_summary.md`, `sdt_summary.json`, `table_sdt.tex` |
+| **Post-hoc** explanation-cue analysis, P4−P2 on all items | `python extra_analysis.py results/qwen2.5-3b-instruct/predictions.jsonl` | printed to stdout |
 
-`summary.md` in each analysis folder collects every number used in the paper.
+`summary.md` in each analysis folder collects every pre-registered number; `sdt_summary.md` holds the post-hoc
+signal-detection numbers. The predictions and analysis outputs of the reported runs are committed under `results/`,
+so every table can be regenerated without a GPU.
+
+## Post-hoc analyses (not pre-registered)
+
+Both analyses below were added after the results were seen and are reported as exploratory.
+
+**Signal detection (`sdt_analysis.py`).** Entailment is the signal.
+
+| Quantity | Definition |
+|---|---|
+| hit rate H | P(pred = Entailment \| gold = Entailment) |
+| false-alarm rate F | P(pred = Entailment \| gold = Non-entailment) |
+| d′ | z(H) − z(F); discrimination, higher is better |
+| c | −(z(H) + z(F)) / 2; **c > 0 = bias toward Non-entailment**, c < 0 = bias toward Entailment, c = 0 = unbiased |
+| Δd′, Δc | first prompt minus second, for P3−P2, P3−P4, P3−P1, P2−P1 |
+
+Invalid outputs are excluded from the SDT computation per prompt, and the number excluded is reported.
+All rates use the log-linear correction of Hautus (1995), (count + 0.5) / (n + 1), in every condition.
+95% CIs come from 2,000 bootstrap resamples stratified by HANS subcase (`numpy.random.default_rng(0)`),
+with the same item resamples shared by both prompts of a contrast.
+
+**Explanation cues (`extra_analysis.py`).** Share of explanations containing *simplif*, *subset* or *omit*
+(cue list chosen after reading sampled outputs) and accuracy with and without the cue, plus the P4−P2
+contrast on all items (stratified bootstrap, `default_rng(0)`).
 
 ## Seeds and fixed settings
 
@@ -66,7 +99,8 @@ pip install -r requirements.txt   # plus a torch build for your machine
 | Decoding | greedy, `max_new_tokens=128`, `repetition_penalty=1.0` (the checkpoint's sampling defaults are overridden), batch size 16 |
 | Conversation | one single-turn conversation per item; Qwen's default system prompt; no examples in the prompt |
 | Label parsing | last `Final label: …` line; anything else is invalid and counted as incorrect (`common.parse_label`) |
-| Bootstrap | 2,000 paired resamples, stratified by HANS subcase, `numpy.random.default_rng(42)` |
+| Bootstrap (pre-registered tests, `analyze.py`) | 2,000 paired resamples, stratified by HANS subcase, `numpy.random.default_rng(42)` |
+| Bootstrap (post-hoc, `sdt_analysis.py`, `extra_analysis.py`) | 2,000 resamples, stratified by HANS subcase, `numpy.random.default_rng(0)` |
 | Example sampling | `random.Random(42)` for flips, random examples, and the annotation sheet |
 
 ## Changes from the proposal (HW1), all made before any evaluation run
@@ -94,11 +128,14 @@ sample_hans.py       build the evaluation and pilot sets from HANS
 prompts.py           the four prompt conditions
 check_prompts.py     token lengths of the instructions
 run_inference.py     generation (resumable)
-analyze.py           tables, tests, figure, example sheets
+analyze.py           tables, tests, figure, example sheets (pre-registered analyses)
+sdt_analysis.py      post-hoc signal-detection analysis (d', c)
+extra_analysis.py    post-hoc explanation-cue analysis
 common.py            I/O, model registry, label parser
 colab_run.ipynb      one-click Colab run
 data/                hans_eval_sample300.jsonl, hans_pilot12.jsonl
-tests/               parser tests and a synthetic-prediction generator
+results/             predictions, run metadata, analysis outputs of the reported runs; env/ = pip freeze, nvidia-smi
+tests/               parser tests, synthetic-prediction generator, greedy-decoding check
 ```
 
 HANS is distributed under the MIT License by its authors (McCoy, Pavlick, and Linzen, 2019).

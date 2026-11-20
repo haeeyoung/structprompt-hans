@@ -1,0 +1,68 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "dtype": "torch.float16",
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "repetition_penalty": 1.0,
+  "cases": [
+    {
+      "item_id": "hans-train-ex6759",
+      "condition": "P1",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "Final label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex10095",
+      "condition": "P1",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "Final label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex5281",
+      "condition": "P2",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "The premise states that the tourists were thanked by the athlete, but it does not provide any information about who mentioned the tourists. The hypothesis that the lawyer mentioned the tourists is not necessarily true based on the given premise. \n\nFinal label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex12223",
+      "condition": "P2",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "The premise states that the doctor recognized the banker, but it does not provide any information about the banker running. The hypothesis that the banker ran is not necessarily true based on the given premise. Therefore, the hypothesis does not follow from the premise.\n\nFinal label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex3142",
+      "condition": "P3",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "In the premise, \"The student was admired by the senators,\" the subject (the student) is receiving admiration from the object (the senators). In the hypothesis, \"The student admired the senators,\" the subject (the student) is performing the action of admiration towards the object (the senators). These actions are reversed, indicating that the hypothesis does not logically follow from the premise. \n\nFinal label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex29203",
+      "condition": "P3",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "In the premise, \"the tourists\" are the ones performing the action of admiring, and \"the actor\" is the one receiving the admiration. The hypothesis directly states that \"the tourists admired the actor,\" which is a simplified version of the premise. The premise includes \"without a doubt,\" which is an expression of certainty but does not change the core action or the subjects involved. Therefore, the hypothesis must be true if the premise is true.\n\nFinal label: Entailment"
+    },
+    {
+      "item_id": "hans-train-ex754",
+      "condition": "P4",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": false,
+      "output": "Both sentences involve communication between two parties, the secretary and the presidents. The premise states that the secretary contacted the presidents, while the hypothesis suggests the presidents contacted the secretary. The premise and hypothesis are essentially stating the same action but from different perspectives, which is a common misunderstanding in communication.\n\nFinal label: Non-entailment"
+    },
+    {
+      "item_id": "hans-train-ex26574",
+      "condition": "P4",
+      "generate_equals_manual_argmax": true,
+      "batched_equals_single": true,
+      "output": "The premise suggests a causal relationship where the recognition of the professor by the students leads to the tourists running. The hypothesis, however, is a simplified version of the premise's conclusion, focusing solely on the tourists running without the causal link. The tone is straightforward and explanatory in both sentences.\n\nFinal label: Non-entailment"
+    }
+  ],
+  "greedy_ok": true,
+  "batched_matches": 7
+}

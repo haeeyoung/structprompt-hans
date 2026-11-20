@@ -1,0 +1,158 @@
+{
+  "post_hoc": true,
+  "note": "POST-HOC (exploratory): added after the results were seen; not pre-registered in the HW1 proposal.",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "definitions": {
+    "signal": "Entailment",
+    "H": "P(pred=Entailment | gold=Entailment)",
+    "F": "P(pred=Entailment | gold=Non-entailment)",
+    "d_prime": "z(H) - z(F)",
+    "c": "-(z(H) + z(F)) / 2",
+    "c_sign": "c > 0 = bias toward Non-entailment; c < 0 = bias toward Entailment; c = 0 = unbiased",
+    "correction": "log-linear (Hautus, 1995): (count + 0.5) / (n + 1), all conditions",
+    "invalid": "outputs without a parseable final label are excluded per prompt",
+    "bootstrap": "2000 resamples stratified by HANS subcase, numpy default_rng(0), percentile 95% CI; paired contrasts reuse the same resamples"
+  },
+  "seed": 0,
+  "n_boot": 2000,
+  "per_prompt": {
+    "P1": {
+      "valid_gold_E": 150,
+      "valid_gold_N": 150,
+      "excluded_invalid": 0,
+      "excluded_gold_E": 0,
+      "excluded_gold_N": 0,
+      "hits": 96,
+      "false_alarms": 22,
+      "H_corrected": 0.6390728476821192,
+      "F_corrected": 0.1490066225165563,
+      "d_prime": 1.3966850100462362,
+      "d_prime_ci": [
+        1.1841896861233399,
+        1.632148210092923
+      ],
+      "c": 0.342360851319068,
+      "c_ci": [
+        0.24178393622307492,
+        0.4547941496415405
+      ]
+    },
+    "P2": {
+      "valid_gold_E": 150,
+      "valid_gold_N": 150,
+      "excluded_invalid": 0,
+      "excluded_gold_E": 0,
+      "excluded_gold_N": 0,
+      "hits": 56,
+      "false_alarms": 7,
+      "H_corrected": 0.3741721854304636,
+      "F_corrected": 0.04966887417218543,
+      "d_prime": 1.327249517760485,
+      "d_prime_ci": [
+        1.0657795924452704,
+        1.7060654902534407
+      ],
+      "c": 0.9844479669165905,
+      "c_ci": [
+        0.8568143030392871,
+        1.1740447828944172
+      ]
+    },
+    "P3": {
+      "valid_gold_E": 147,
+      "valid_gold_N": 147,
+      "excluded_invalid": 6,
+      "excluded_gold_E": 3,
+      "excluded_gold_N": 3,
+      "hits": 102,
+      "false_alarms": 18,
+      "H_corrected": 0.6925675675675675,
+      "F_corrected": 0.125,
+      "d_prime": 1.6534907753070511,
+      "d_prime_ci": [
+        1.4077754474176807,
+        1.935896440172693
+      ],
+      "c": 0.32360399272248225,
+      "c_ci": [
+        0.1965130698454784,
+        0.47790326899718455
+      ]
+    },
+    "P4": {
+      "valid_gold_E": 149,
+      "valid_gold_N": 150,
+      "excluded_invalid": 1,
+      "excluded_gold_E": 1,
+      "excluded_gold_N": 0,
+      "hits": 85,
+      "false_alarms": 16,
+      "H_corrected": 0.57,
+      "F_corrected": 0.10927152317880795,
+      "d_prime": 1.4067856721002903,
+      "d_prime_ci": [
+        1.162545956282609,
+        1.6874738092093282
+      ],
+      "c": 0.5270186712692839,
+      "c_ci": [
+        0.4067479566488013,
+        0.6605832401273571
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "contrast": "P3-P2",
+      "delta_d_prime": 0.3262412575465661,
+      "delta_d_prime_ci": [
+        -0.10560226392252814,
+        0.6927062766987717
+      ],
+      "delta_c": -0.6608439741941083,
+      "delta_c_ci": [
+        -0.8808783711872968,
+        -0.472104444430832
+      ]
+    },
+    {
+      "contrast": "P3-P4",
+      "delta_d_prime": 0.24670510320676087,
+      "delta_d_prime_ci": [
+        -0.08533458995785044,
+        0.578030925514154
+      ],
+      "delta_c": -0.20341467854680167,
+      "delta_c_ci": [
+        -0.37717632903694326,
+        -0.03437571042187019
+      ]
+    },
+    {
+      "contrast": "P3-P1",
+      "delta_d_prime": 0.2568057652608149,
+      "delta_d_prime_ci": [
+        -0.024271943224936827,
+        0.5542706357046822
+      ],
+      "delta_c": -0.018756858596585768,
+      "delta_c_ci": [
+        -0.1597253825719514,
+        0.13898460491717118
+      ]
+    },
+    {
+      "contrast": "P2-P1",
+      "delta_d_prime": -0.06943549228575119,
+      "delta_d_prime_ci": [
+        -0.3909376602375442,
+        0.3175637289831286
+      ],
+      "delta_c": 0.6420871155975225,
+      "delta_c_ci": [
+        0.49411249474882446,
+        0.8278858159896476
+      ]
+    }
+  ]
+}

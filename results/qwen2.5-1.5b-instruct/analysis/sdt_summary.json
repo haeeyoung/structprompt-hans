@@ -1,0 +1,158 @@
+{
+  "post_hoc": true,
+  "note": "POST-HOC (exploratory): added after the results were seen; not pre-registered in the HW1 proposal.",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "definitions": {
+    "signal": "Entailment",
+    "H": "P(pred=Entailment | gold=Entailment)",
+    "F": "P(pred=Entailment | gold=Non-entailment)",
+    "d_prime": "z(H) - z(F)",
+    "c": "-(z(H) + z(F)) / 2",
+    "c_sign": "c > 0 = bias toward Non-entailment; c < 0 = bias toward Entailment; c = 0 = unbiased",
+    "correction": "log-linear (Hautus, 1995): (count + 0.5) / (n + 1), all conditions",
+    "invalid": "outputs without a parseable final label are excluded per prompt",
+    "bootstrap": "2000 resamples stratified by HANS subcase, numpy default_rng(0), percentile 95% CI; paired contrasts reuse the same resamples"
+  },
+  "seed": 0,
+  "n_boot": 2000,
+  "per_prompt": {
+    "P1": {
+      "valid_gold_E": 150,
+      "valid_gold_N": 150,
+      "excluded_invalid": 0,
+      "excluded_gold_E": 0,
+      "excluded_gold_N": 0,
+      "hits": 89,
+      "false_alarms": 42,
+      "H_corrected": 0.5927152317880795,
+      "F_corrected": 0.2814569536423841,
+      "d_prime": 0.813053967033724,
+      "d_prime_ci": [
+        0.597521174037937,
+        1.018059138417057
+      ],
+      "c": 0.17199181825288767,
+      "c_ci": [
+        0.06300893105756661,
+        0.27774503912217047
+      ]
+    },
+    "P2": {
+      "valid_gold_E": 150,
+      "valid_gold_N": 150,
+      "excluded_invalid": 0,
+      "excluded_gold_E": 0,
+      "excluded_gold_N": 0,
+      "hits": 27,
+      "false_alarms": 17,
+      "H_corrected": 0.18211920529801323,
+      "F_corrected": 0.11589403973509933,
+      "d_prime": 0.28844703977966535,
+      "d_prime_ci": [
+        0.058858248089709075,
+        0.5227621230895477
+      ],
+      "c": 1.0515419882145554,
+      "c_ci": [
+        0.9404627379095563,
+        1.1693552675136316
+      ]
+    },
+    "P3": {
+      "valid_gold_E": 124,
+      "valid_gold_N": 131,
+      "excluded_invalid": 45,
+      "excluded_gold_E": 26,
+      "excluded_gold_N": 19,
+      "hits": 68,
+      "false_alarms": 45,
+      "H_corrected": 0.548,
+      "F_corrected": 0.3446969696969697,
+      "d_prime": 0.5202876064480272,
+      "d_prime_ci": [
+        0.24589255368780163,
+        0.7939684343537042
+      ],
+      "c": 0.13953386910470622,
+      "c_ci": [
+        0.006315205287185171,
+        0.27503975754600074
+      ]
+    },
+    "P4": {
+      "valid_gold_E": 150,
+      "valid_gold_N": 150,
+      "excluded_invalid": 0,
+      "excluded_gold_E": 0,
+      "excluded_gold_N": 0,
+      "hits": 0,
+      "false_alarms": 0,
+      "H_corrected": 0.0033112582781456954,
+      "F_corrected": 0.0033112582781456954,
+      "d_prime": 0.0,
+      "d_prime_ci": [
+        0.0,
+        0.0
+      ],
+      "c": 2.715252954716806,
+      "c_ci": [
+        2.715252954716806,
+        2.715252954716806
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "contrast": "P3-P2",
+      "delta_d_prime": 0.23184056666836184,
+      "delta_d_prime_ci": [
+        -0.07847789097067812,
+        0.5375088500757714
+      ],
+      "delta_c": -0.9120081191098491,
+      "delta_c_ci": [
+        -1.0822657706485534,
+        -0.7462661302597348
+      ]
+    },
+    {
+      "contrast": "P3-P4",
+      "delta_d_prime": 0.5202876064480272,
+      "delta_d_prime_ci": [
+        0.24589255368780163,
+        0.7939684343537042
+      ],
+      "delta_c": -2.5757190856121,
+      "delta_c_ci": [
+        -2.708937749429621,
+        -2.4402131971708054
+      ]
+    },
+    {
+      "contrast": "P3-P1",
+      "delta_d_prime": -0.2927663605856968,
+      "delta_d_prime_ci": [
+        -0.6013247020102432,
+        0.03385887166363861
+      ],
+      "delta_c": -0.03245794914818145,
+      "delta_c_ci": [
+        -0.1964231957773033,
+        0.12779550326291794
+      ]
+    },
+    {
+      "contrast": "P2-P1",
+      "delta_d_prime": -0.5246069272540587,
+      "delta_d_prime_ci": [
+        -0.7849966572040703,
+        -0.25531115251255265
+      ],
+      "delta_c": 0.8795501699616677,
+      "delta_c_ci": [
+        0.7501799987870809,
+        1.023956662786554
+      ]
+    }
+  ]
+}

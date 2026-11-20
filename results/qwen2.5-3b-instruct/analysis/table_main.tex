@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{l cccc cccc c c c}
+\toprule
+ & \multicolumn{4}{c}{Heuristic-conflicting (gold: non-ent.)} & \multicolumn{4}{c}{Heuristic-consistent (gold: ent.)} & & & \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+Prompt & LO & SUB & CON & All & LO & SUB & CON & All & Overall & NE\% & Inv. \\
+\midrule
+P1 Basic & 100.0 & 68.0 & 88.0 & 85.3 & 50.0 & 92.0 & 50.0 & 64.0 & 74.7 & 60.7 & 0 \\
+P2 General reasoning & 100.0 & 86.0 & 100.0 & 95.3 & 30.0 & 50.0 & 32.0 & 37.3 & 66.3 & 79.0 & 0 \\
+P3 Structure-aware & 100.0 & 74.0 & 84.0 & 86.0 & 60.0 & 88.0 & 56.0 & 68.0 & 77.0 & 58.0 & 6 \\
+P4 Nonstructural control & 98.0 & 78.0 & 92.0 & 89.3 & 48.0 & 86.0 & 36.0 & 56.7 & 73.0 & 66.0 & 1 \\
+\bottomrule
+\end{tabular}
+\caption{Accuracy (\%) of Qwen/Qwen2.5-3B-Instruct on 300 HANS pairs (50 per heuristic and gold label). LO = lexical overlap, SUB = subsequence, CON = constituent. NE\% = share of all 300 predictions that are Non-entailment; Inv. = outputs without a valid final label (counted as incorrect).}
+\label{tab:main}
+\end{table*}
