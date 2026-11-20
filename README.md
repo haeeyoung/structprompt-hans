@@ -88,6 +88,22 @@ with the same item resamples shared by both prompts of a contrast.
 (cue list chosen after reading sampled outputs) and accuracy with and without the cue, plus the P4−P2
 contrast on all items (stratified bootstrap, `default_rng(42)`).
 
+**Annotation of P3 explanations** (`results/qwen2.5-3b-instruct/analysis/annotation_sheet_P3_filled.csv`).
+The 45 P3 outputs in `annotation_sheet_P3.csv` (15 per heuristic, 24 gold Non-entailment and 21 gold Entailment,
+sampled by `analyze.py` with seed 42) are coded for two properties, with a short rationale in `notes`:
+
+| Column | 1 means |
+|---|---|
+| `roles_correct` | every agent–patient relation the explanation states is correct |
+| `label_follows` | the explanation supports the final label that follows it |
+
+Annotator: Claude (Anthropic), following this rubric. This is not an independent human annotation
+(see the paper's Limitations and AI-usage appendix). Counts reported in the paper:
+
+```bash
+python -c "import pandas as pd; f=pd.read_csv('results/qwen2.5-3b-instruct/analysis/annotation_sheet_P3_filled.csv', encoding='utf-8-sig'); print(f[['roles_correct','label_follows']].sum()); print(pd.crosstab(f.roles_correct, f.P3_correct))"
+```
+
 ## Seeds and fixed settings
 
 | What | Setting |
