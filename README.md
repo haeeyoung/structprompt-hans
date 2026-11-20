@@ -49,6 +49,7 @@ pip install -r requirements.txt   # plus a torch build for your machine
 | Output | Command | Writes |
 |---|---|---|
 | Evaluation sample (300 pairs) and pilot set (12 pairs) | `python sample_hans.py --verify` | checks `data/*.jsonl` against HANS |
+| Rebuild that sample from HANS (overwrites `data/*.jsonl` with identical files) | `python sample_hans.py` | `data/hans_eval_sample300.jsonl`, `data/hans_pilot12.jsonl` |
 | Instruction token lengths (P3 vs P4) | `python check_prompts.py --tag qwen2.5-3b-instruct` | `results/<tag>/prompt_lengths.json` |
 | Pilot format check | `python run_inference.py --tag qwen2.5-3b-instruct --split pilot` | `results/<tag>/pilot_predictions.jsonl` |
 | Raw predictions (1,200) | `python run_inference.py --tag qwen2.5-3b-instruct --split eval` | `results/<tag>/predictions.jsonl` |
@@ -60,6 +61,8 @@ pip install -r requirements.txt   # plus a torch build for your machine
 | Robustness model | the last three commands with `--tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/` |
 | **Post-hoc** SDT table: d′, c, paired Δd′/Δc | `python sdt_analysis.py --tag qwen2.5-3b-instruct` | `results/<tag>/analysis/sdt_summary.md`, `sdt_summary.json`, `table_sdt.tex` |
 | **Post-hoc** explanation-cue analysis, P4−P2 on all items | `python extra_analysis.py results/qwen2.5-3b-instruct/predictions.jsonl` | printed to stdout |
+| **Post-hoc** SDT table, 1.5B model | `python sdt_analysis.py --tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/analysis/sdt_summary.md`, `sdt_summary.json`, `table_sdt.tex` |
+| **Post-hoc** explanation-cue analysis, 1.5B model | `python extra_analysis.py results/qwen2.5-1.5b-instruct/predictions.jsonl` | printed to stdout |
 
 `summary.md` in each analysis folder collects every pre-registered number; `sdt_summary.md` holds the post-hoc
 signal-detection numbers. The predictions and analysis outputs of the reported runs are committed under `results/`,
