@@ -7,7 +7,8 @@ Separates discrimination (d') from response bias (c) for each prompt, with Entai
     c  = -(z(H) + z(F)) / 2                              bias: c > 0 toward Non-entailment, c < 0 toward Entailment
 Invalid outputs (no parseable final label) are excluded per prompt and counted.
 Every rate uses the log-linear correction of Hautus (1995), (count + 0.5) / (n + 1), in every condition.
-CIs: 2,000 bootstrap resamples stratified by HANS subcase, numpy default_rng(0), percentile 95%.
+CIs: 2,000 bootstrap resamples stratified by HANS subcase, numpy default_rng(42) (the seed of analyze.py),
+percentile 95%.
 Paired differences reuse the same item resamples for both prompts.
 
     python sdt_analysis.py --tag qwen2.5-3b-instruct
@@ -27,7 +28,7 @@ from analyze import boot_indices, load
 from prompts import CONDITION_NAMES, CONDITIONS
 
 N_BOOT = 2000
-SEED = 0
+SEED = 42  # same as analyze.py
 CONTRASTS = [("P3", "P2"), ("P3", "P4"), ("P3", "P1"), ("P2", "P1")]
 NOTE = ("POST-HOC (exploratory): added after the results were seen; not pre-registered in the HW1 proposal.")
 SIGN = "c > 0 = bias toward Non-entailment; c < 0 = bias toward Entailment; c = 0 = unbiased"

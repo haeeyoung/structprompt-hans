@@ -40,7 +40,7 @@ w = d.pivot_table(index=["item_id", "subcase"], columns="condition", values="c")
 x = (w["P4"] - w["P2"]).to_numpy(float)
 strata = w["subcase"].to_numpy()
 groups = [np.where(strata == u)[0] for u in np.unique(strata)]
-rng = np.random.default_rng(0)
+rng = np.random.default_rng(42)
 bs = [x[np.concatenate([rng.choice(g, len(g)) for g in groups])].mean() for _ in range(2000)]
 n01 = int(((w.P4 == 1) & (w.P2 == 0)).sum()); n10 = int(((w.P4 == 0) & (w.P2 == 1)).sum())
 lo, hi = np.percentile(bs, [2.5, 97.5])

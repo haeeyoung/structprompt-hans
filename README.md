@@ -81,12 +81,12 @@ Both analyses below were added after the results were seen and are reported as e
 
 Invalid outputs are excluded from the SDT computation per prompt, and the number excluded is reported.
 All rates use the log-linear correction of Hautus (1995), (count + 0.5) / (n + 1), in every condition.
-95% CIs come from 2,000 bootstrap resamples stratified by HANS subcase (`numpy.random.default_rng(0)`),
+95% CIs come from 2,000 bootstrap resamples stratified by HANS subcase (`numpy.random.default_rng(42)`, as in `analyze.py`),
 with the same item resamples shared by both prompts of a contrast.
 
 **Explanation cues (`extra_analysis.py`).** Share of explanations containing *simplif*, *subset* or *omit*
 (cue list chosen after reading sampled outputs) and accuracy with and without the cue, plus the P4−P2
-contrast on all items (stratified bootstrap, `default_rng(0)`).
+contrast on all items (stratified bootstrap, `default_rng(42)`).
 
 ## Seeds and fixed settings
 
@@ -99,8 +99,7 @@ contrast on all items (stratified bootstrap, `default_rng(0)`).
 | Decoding | greedy, `max_new_tokens=128`, `repetition_penalty=1.0` (the checkpoint's sampling defaults are overridden), batch size 16 |
 | Conversation | one single-turn conversation per item; Qwen's default system prompt; no examples in the prompt |
 | Label parsing | last `Final label: …` line; anything else is invalid and counted as incorrect (`common.parse_label`) |
-| Bootstrap (pre-registered tests, `analyze.py`) | 2,000 paired resamples, stratified by HANS subcase, `numpy.random.default_rng(42)` |
-| Bootstrap (post-hoc, `sdt_analysis.py`, `extra_analysis.py`) | 2,000 resamples, stratified by HANS subcase, `numpy.random.default_rng(0)` |
+| Bootstrap (`analyze.py`, post-hoc `sdt_analysis.py` and `extra_analysis.py`) | 2,000 paired resamples, stratified by HANS subcase, `numpy.random.default_rng(42)` |
 | Example sampling | `random.Random(42)` for flips, random examples, and the annotation sheet |
 
 ## Changes from the proposal (HW1), all made before any evaluation run
