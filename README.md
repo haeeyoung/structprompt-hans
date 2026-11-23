@@ -46,27 +46,45 @@ pip install -r requirements.txt   # plus a torch build for your machine
 
 ## Reproducing each result
 
-| Output | Command | Writes |
-|---|---|---|
-| Evaluation sample (300 pairs) and pilot set (12 pairs) | `python sample_hans.py --verify` | checks `data/*.jsonl` against HANS |
-| Rebuild that sample from HANS (overwrites `data/*.jsonl` with identical files) | `python sample_hans.py` | `data/hans_eval_sample300.jsonl`, `data/hans_pilot12.jsonl` |
-| Instruction token lengths (P3 vs P4) | `python check_prompts.py --tag qwen2.5-3b-instruct` | `results/<tag>/prompt_lengths.json` |
-| Pilot format check | `python run_inference.py --tag qwen2.5-3b-instruct --split pilot` | `results/<tag>/pilot_predictions.jsonl` |
-| Raw predictions (1,200) | `python run_inference.py --tag qwen2.5-3b-instruct --split eval` | `results/<tag>/predictions.jsonl` |
-| Table 1: accuracy by heuristic and label | `python analyze.py --tag qwen2.5-3b-instruct` | `results/<tag>/analysis/table_main.tex` |
-| Table 2: H1/H2 tests, bootstrap CIs, McNemar | same command | `results/<tag>/analysis/table_tests.tex` |
-| Figure: accuracy and non-entailment rate | same command | `results/<tag>/analysis/fig_accuracy.pdf` |
-| Appendix: per-subcase accuracy | same command | `results/<tag>/analysis/table_subcase.tex` |
-| Sampled examples and P2→P3 flips | same command | `random_examples.md`, `flips_P2_P3.md` |
-| Robustness model | the last three commands with `--tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/` |
-| **Post-hoc** SDT table: d′, c, paired Δd′/Δc | `python sdt_analysis.py --tag qwen2.5-3b-instruct` | `results/<tag>/analysis/sdt_summary.md`, `sdt_summary.json`, `table_sdt.tex` |
-| **Post-hoc** explanation-cue analysis, P4−P2 on all items | `python extra_analysis.py results/qwen2.5-3b-instruct/predictions.jsonl` | printed to stdout |
-| **Post-hoc** SDT table, 1.5B model | `python sdt_analysis.py --tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/analysis/sdt_summary.md`, `sdt_summary.json`, `table_sdt.tex` |
-| **Post-hoc** explanation-cue analysis, 1.5B model | `python extra_analysis.py results/qwen2.5-1.5b-instruct/predictions.jsonl` | printed to stdout |
+Run every command from the repository root. Only `run_inference.py` needs a GPU; everything else reads the
+committed predictions. `<tag>` is `qwen2.5-3b-instruct` (main model) or `qwen2.5-1.5b-instruct` (second model).
 
-`summary.md` in each analysis folder collects every pre-registered number; `sdt_summary.md` holds the post-hoc
-signal-detection numbers. The predictions and analysis outputs of the reported runs are committed under `results/`,
-so every table can be regenerated without a GPU.
+### Data and predictions
+
+| Step | Command | Writes |
+|---|---|---|
+| Check the evaluation sample (300 pairs) and pilot set (12 pairs) against HANS | `python sample_hans.py --verify` | nothing; prints whether `data/*.jsonl` match |
+| Rebuild that sample from HANS (overwrites `data/*.jsonl` with identical files) | `python sample_hans.py` | `data/hans_eval_sample300.jsonl`, `data/hans_pilot12.jsonl` |
+| Pilot format check | `python run_inference.py --tag <tag> --split pilot` | `results/<tag>/pilot_predictions.jsonl` |
+| Raw predictions (1,200 per model) | `python run_inference.py --tag <tag> --split eval` | `results/<tag>/predictions.jsonl`, `run_meta_eval.json` |
+
+### Paper tables and figure
+
+| Paper | Content | Command | Source file |
+|---|---|---|---|
+| Table 1 | Prompting conditions and instruction lengths | `python check_prompts.py --tag qwen2.5-3b-instruct` | `results/qwen2.5-3b-instruct/prompt_lengths.json`; wording in `prompts.py` |
+| Table 2 | 3B accuracy by heuristic and gold label | `python analyze.py --tag qwen2.5-3b-instruct` | `results/qwen2.5-3b-instruct/analysis/table_main.tex` |
+| Table 3 | Paired comparisons and hypothesis tests (H1, H2) | same as Table 2 | `results/qwen2.5-3b-instruct/analysis/table_tests.tex` |
+| Table 4 | 1.5B accuracy | `python analyze.py --tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/analysis/table_main.tex`; label-first rate in `summary.md` |
+| Table 5 | **Post-hoc** signal detection (d′, c) | `python sdt_analysis.py --tag qwen2.5-3b-instruct` | `results/qwen2.5-3b-instruct/analysis/table_sdt.tex` |
+| Table 6 | **Post-hoc** explanation-cue analysis | `python extra_analysis.py results/qwen2.5-3b-instruct/predictions.jsonl` | printed to stdout |
+| Table 7 | Reproducibility settings | none | `common.py` (`MODELS`), `results/<tag>/run_meta_eval.json`, `results/env/`, [Seeds and fixed settings](#seeds-and-fixed-settings) |
+| Table 8 | Per-subcase results | same as Table 2 | `results/qwen2.5-3b-instruct/analysis/table_subcase.tex` |
+| Figure 1 | 3B accuracy and non-entailment rate by heuristic | same as Table 2 | `results/qwen2.5-3b-instruct/analysis/fig_accuracy.pdf` |
+
+Numbers quoted only in the text come from the same runs:
+
+| Text | Command | Source file |
+|---|---|---|
+| 1.5B signal-detection numbers | `python sdt_analysis.py --tag qwen2.5-1.5b-instruct` | `results/qwen2.5-1.5b-instruct/analysis/sdt_summary.md` |
+| P4−P2 on all items | the Table 6 command | printed to stdout |
+| Explanation cues for the 1.5B model | `python extra_analysis.py results/qwen2.5-1.5b-instruct/predictions.jsonl` | printed to stdout |
+| Randomly sampled examples and P2→P3 flips | same as Table 2 | `random_examples.md`, `flips_P2_P3.md` |
+| P3 annotation counts | command under [Post-hoc analyses](#post-hoc-analyses-not-pre-registered) | `annotation_sheet_P3_filled.csv` |
+
+`summary.md` in each analysis folder collects every pre-registered number with its CI; `sdt_summary.md` holds the
+post-hoc signal-detection numbers. The predictions and analysis outputs of the reported runs are committed under
+`results/`, so every table can be regenerated without a GPU.
 
 ## Post-hoc analyses (not pre-registered)
 
@@ -84,12 +102,12 @@ Both analyses below were added after the results were seen and are reported as e
 
 Invalid outputs are excluded from the SDT computation per prompt, and the number excluded is reported.
 All rates use the log-linear correction of Hautus (1995), (count + 0.5) / (n + 1), in every condition.
-95% CIs come from 2,000 bootstrap resamples stratified by HANS subcase (`numpy.random.default_rng(42)`, as in `analyze.py`),
-with the same item resamples shared by both prompts of a contrast.
+95% CIs come from the subcase-stratified paired bootstrap described under
+[Seeds and fixed settings](#seeds-and-fixed-settings), with the same item resamples shared by both prompts of a contrast.
 
 **Explanation cues (`extra_analysis.py`).** Share of explanations containing *simplif*, *subset* or *omit*
 (cue list chosen after reading sampled outputs) and accuracy with and without the cue, plus the P4−P2
-contrast on all items (stratified bootstrap, `default_rng(42)`).
+contrast on all items with the same bootstrap.
 
 **Annotation of P3 explanations** (`results/qwen2.5-3b-instruct/analysis/annotation_sheet_P3_filled.csv`).
 The 45 P3 outputs in `annotation_sheet_P3.csv` (15 per heuristic, 24 gold Non-entailment and 21 gold Entailment,
@@ -109,6 +127,8 @@ python -c "import pandas as pd; f=pd.read_csv('results/qwen2.5-3b-instruct/analy
 
 ## Seeds and fixed settings
 
+**All bootstrap seeds are 42:** every bootstrap in `analyze.py`, `sdt_analysis.py` and `extra_analysis.py` draws 2,000 paired resamples stratified by HANS subcase with `numpy.random.default_rng(42)`.
+
 | What | Setting |
 |---|---|
 | HANS source | [tommccoy1/hans](https://github.com/tommccoy1/hans) at commit `7299f6f`, SHA-256 checked in `sample_hans.py` |
@@ -118,7 +138,6 @@ python -c "import pandas as pd; f=pd.read_csv('results/qwen2.5-3b-instruct/analy
 | Decoding | greedy, `max_new_tokens=128`, `repetition_penalty=1.0` (the checkpoint's sampling defaults are overridden), batch size 16 |
 | Conversation | one single-turn conversation per item; Qwen's default system prompt; no examples in the prompt |
 | Label parsing | last `Final label: …` line; anything else is invalid and counted as incorrect (`common.parse_label`) |
-| Bootstrap (`analyze.py`, post-hoc `sdt_analysis.py` and `extra_analysis.py`) | 2,000 paired resamples, stratified by HANS subcase, `numpy.random.default_rng(42)` |
 | Example sampling | `random.Random(42)` for flips, random examples, and the annotation sheet |
 
 ## Changes from the proposal (HW1), all made before any evaluation run
